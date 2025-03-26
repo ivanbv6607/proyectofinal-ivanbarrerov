@@ -2,7 +2,6 @@ from app import create_app
 from app.config.config import Config
 
 app = create_app(Config)
-print ("Hello world!")
 
 if __name__ == "__main__":
     app.run(debug=True) 
