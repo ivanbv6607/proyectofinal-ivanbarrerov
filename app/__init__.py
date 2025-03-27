@@ -7,24 +7,24 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import logging
 
-
+def create_app(config):
 #app = Flask(__name__)
-app = Flask(__name__, template_folder="views")
-app.config.from_object(Config)
+        app = Flask(__name__, template_folder="views")
+        app.config.from_object(Config)
 
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-login_manager.init_app(app)
-register_routes(app)
+        db = SQLAlchemy(app)
+        migrate = Migrate(app, db)
+        login_manager.init_app(app)
+        register_routes(app)
 
 # Setup console logging
-if not app.debug:
-    stream_handler = logging.StreamHandler()
-    stream_handler.setLevel(logging.INFO)
-    app.logger.addHandler(stream_handler)
+        if not app.debug:
+                stream_handler = logging.StreamHandler()
+                stream_handler.setLevel(logging.INFO)
+                app.logger.addHandler(stream_handler)
 
-app.logger.setLevel(logging.INFO)
-app.logger.info('Flask App startup')
+        app.logger.setLevel(logging.INFO)
+        app.logger.info('Flask App startup')
 
 """def create_app(config):
         app = Flask(__name__, template_folder="views")
