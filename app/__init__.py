@@ -8,11 +8,13 @@ from flask_migrate import Migrate
 import logging
 
 
-app = Flask(__name__)
+#app = Flask(__name__)
+app = Flask(__name__, template_folder="views")
 app.config.from_object(Config)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+login_manager.init_app(app)
 register_routes(app)
 
 # Setup console logging
