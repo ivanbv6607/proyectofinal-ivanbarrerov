@@ -1,9 +1,10 @@
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import os
 
-load_dotenv()
+#load_dotenv()
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI','postgres_url_here')
-    SECRET_KEY = 'Clave'
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI','postgres://postgres.beuliblewzcpsfbzhmls:PAczwVzVigO9Umgw@aws-0-us-east-1.pooler.supabase.com:6543/postgres?sslmode=require&supa=base-pooler.x')
+    SECRET_KEY = os.getenv('SECRET_KEY', os.urandom(24))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    
