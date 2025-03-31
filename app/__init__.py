@@ -1,5 +1,5 @@
 from flask import Flask
-#from app.config.db import db
+from app.config.db import db
 from app.config.config import Config
 from app.config.routes import register_routes
 from app.config.auth import login_manager
@@ -7,8 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import logging
 
-def create_app(config):
-#app = Flask(__name__)
+def create_app(Config):
         app = Flask(__name__, template_folder="views")
         app.config.from_object(Config)
 
