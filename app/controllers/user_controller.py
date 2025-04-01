@@ -18,14 +18,15 @@ def login():
 def auth():
     username = request.args.get("username")
     password = request.args.get("password")
-    user = User.query.filter_by(username=username, password=password).first()
+    try:
+        user = User.query.filter_by(username=username, password=password).first()
 
-    print(user)
-    if user:
-        login_user(user)
-        return render_template('dashboard.html')
-    
-    return render_template('login.html')
+        print(user)
+        if user:
+            login_user(user)
+            return render_template('dashboard.html')
+    except:
+        return render_template('login.html')
 
 @login_blueprint.route('/auth/profile') 
 @login_required
