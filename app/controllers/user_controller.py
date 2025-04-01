@@ -19,7 +19,6 @@ def auth():
     username = request.args.get("username")
     password = request.args.get("password")
     try:
-        print ("usuario ",username,"  ",password)
         user = User.query.filter_by(username=username, password=password).first()
 
         login_user(user)
