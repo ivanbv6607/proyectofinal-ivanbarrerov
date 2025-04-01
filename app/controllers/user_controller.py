@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from app.models.user import User
-#from app.config.db import db
+from app.config.db import db
 from flask_login import login_user, login_required, logout_user, current_user
 from app.config.auth import login_manager
 

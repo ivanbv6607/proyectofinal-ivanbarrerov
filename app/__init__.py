@@ -7,14 +7,16 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import logging
 
-def create_app(Config):
+def create_app(config):
         app = Flask(__name__, template_folder="views")
         app.config.from_object(Config)
-
-        db = SQLAlchemy(app)
+        db.init_app(app)
+        #db = SQLAlchemy(app)
+        
         migrate = Migrate(app, db)
         login_manager.init_app(app)
         register_routes(app)
+        return app
 
 # Setup console logging
         if not app.debug:
@@ -24,6 +26,7 @@ def create_app(Config):
 
         app.logger.setLevel(logging.INFO)
         app.logger.info('Flask App startup')
+        
 
 """def create_app(config):
         app = Flask(__name__, template_folder="views")
@@ -37,5 +40,5 @@ def create_app(Config):
         with app.app_context():
                 db.create_all()
 
-        return app  """
+          """
         
