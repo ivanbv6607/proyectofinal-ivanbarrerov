@@ -20,11 +20,9 @@ def auth():
     password = request.args.get("password")
     try:
         user = User.query.filter_by(username=username, password=password).first()
-
-        print(user)
-        if user:
-            login_user(user)
-            return render_template('dashboard.html')
+        #if user:
+        login_user(user)
+        return render_template('dashboard.html')
     except:
         return render_template('login.html')
 
